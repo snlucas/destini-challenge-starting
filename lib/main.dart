@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'story_brain.dart';
-import 'story_brain.dart';
 
 void main() => runApp(Destini());
 
@@ -41,7 +40,7 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 12,
                 child: Center(
                   child: Text(
-                    storyBrain.getStory(0),
+                    storyBrain.getStory(),
                     style: TextStyle(
                       fontSize: 25.0,
                     ),
@@ -50,15 +49,20 @@ class _StoryPageState extends State<StoryPage> {
               ),
               Expanded(
                 flex: 2,
-                child: FlatButton(
-                  onPressed: () {
-                    storyBrain.nextStory(1);
-                  },
-                  color: Colors.red,
-                  child: Text(
-                    storyBrain.getChoice1(0),
-                    style: TextStyle(
-                      fontSize: 20.0,
+                child: Visibility(
+                  visible: storyBrain.buttonShouldBeVisible(),
+                  child: FlatButton(
+                    onPressed: () {
+                      setState(() {
+                        storyBrain.nextStory(1);
+                      });
+                    },
+                    color: Colors.red,
+                    child: Text(
+                      storyBrain.getChoice1(0),
+                      style: TextStyle(
+                        fontSize: 20.0,
+                      ),
                     ),
                   ),
                 ),
@@ -72,7 +76,9 @@ class _StoryPageState extends State<StoryPage> {
                   visible: storyBrain.buttonShouldBeVisible(),
                   child: FlatButton(
                     onPressed: () {
-                      storyBrain.nextStory(2);
+                      setState(() {
+                        storyBrain.nextStory(2);
+                      });
                     },
                     color: Colors.blue,
                     child: Text(
@@ -91,7 +97,3 @@ class _StoryPageState extends State<StoryPage> {
     );
   }
 }
-
-//TODO: Step 24 - Run the app and try to figure out what code you need to add to this file to make the story change when you press on the choice buttons.
-
-//TODO: Step 29 - Run the app and test it against the Story Outline to make sure you've completed all the steps. The code for the completed app can be found here: https://github.com/londonappbrewery/destini-challenge-completed/

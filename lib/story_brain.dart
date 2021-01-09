@@ -33,10 +33,8 @@ class StoryBrain {
         choice2: '')
   ];
 
-//TODO: Step 23 - Use the storyNumber property inside getStory(), getChoice1() and getChoice2() so that it gets the updated story and choices rather than always just the first (0th) one.
-
-  String getStory(int storyNumber) {
-    return this._storyData[storyNumber].storyTitle;
+  String getStory() {
+    return this._storyData[this._storyNumber].storyTitle;
   }
 
   String getChoice1(int storyNumber) {
@@ -46,8 +44,6 @@ class StoryBrain {
   String getChoice2(int storyNumber) {
     return this._storyData[storyNumber].choice2;
   }
-
-//TODO: Step 25 - Change the storyNumber property into a private property so that only story_brain.dart has access to it. You can do this by right clicking on the name (storyNumber) and selecting Refactor -> Rename to make the change across all the places where it's used.
 
   int _storyNumber = 0;
 
@@ -82,6 +78,6 @@ class StoryBrain {
   }
 
   bool buttonShouldBeVisible() {
-    return this._storyNumber >= 0 && this._storyNumber < 3 ? true : false;
+    return this._storyNumber < 3 ? true : false;
   }
 }
